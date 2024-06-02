@@ -1,0 +1,20 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Build project with MSBuild
+      run: msbuild AsteriskPassword.vcxproj /p:Configuration=Release /p:Platform="x64"
