@@ -19,4 +19,9 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Build project with MSBuild
-      run: msbuild AsteriskPassword.vcxproj /p:Configuration=Release /p:Platform="x64"
+      run: msbuild AsteriskPassword.vcxproj
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: compiled-files
+        path: bin/*      
